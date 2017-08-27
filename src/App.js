@@ -7,14 +7,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: '',
-      time: ''
+      color: ''
     };
   }    
   handleClick = () => {
-    var color = this.state.color 
-    var time = this.state.time
-    this.props.dispatch(actions.delayChange(time, color))
+    var color = this.state.color
+    this.props.dispatch(actions.changeBg(color))
   }
   handleChange = (e) => {
     var color = e.target.value
@@ -22,22 +20,11 @@ class App extends Component {
       color: color
     })
   }
-  handleInputChange = (e) => {
-    var time = e.target.value 
-    if (isNaN(time)) {
-      alert('time只能是数字')
-    } else {
-      this.setState({
-        time: time
-      })
-    }
-  }
   render() {  
     return (
       <div className="App">
         <Timer color={this.props.color} />
         <br/><br/>
-        <input value={this.state.time} onChange={this.handleInputChange} />
         <select onChange={this.handleChange}>
           <option value="">select</option>
           <option value="red">red</option>
