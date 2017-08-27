@@ -1,51 +1,28 @@
 import React, { Component } from 'react';
 
-import * as actions from './store/actions';
-import { connect } from 'react-redux';
-
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: '',
-      time: ''
+      color: ''
     };
   }    
-  handleClick = () => {
-    var color = this.state.color 
-    var time = this.state.time
-    this.props.dispatch(actions.delayChange(time, color))
-  }
   handleChange = (e) => {
     var color = e.target.value
     this.setState({
       color: color
     })
   }
-  handleInputChange = (e) => {
-    var time = e.target.value 
-    if (isNaN(time)) {
-      alert('time只能是数字')
-    } else {
-      this.setState({
-        time: time
-      })
-    }
-  }
   render() {  
     return (
       <div className="App">
-        <Timer color={this.props.color} />
-        <br/><br/>
-        <input value={this.state.time} onChange={this.handleInputChange} />
+        <Timer color={this.state.color} />
         <select onChange={this.handleChange}>
           <option value="">select</option>
           <option value="red">red</option>
           <option value="blue">blue</option>
           <option value="yellow">yellow</option>
         </select>
-        <br/><br/>
-        <button onClick={this.handleClick}>change</button>
       </div>
     );
   }
@@ -72,10 +49,4 @@ class Timer extends Component {
   }
 }
 
-function select(state){
-  return {
-    ...state
-  }
-}
-
-export default connect(select)(App);
+export default App
