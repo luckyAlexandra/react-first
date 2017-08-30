@@ -12,7 +12,7 @@ function* test(action) {
 
 function* helloSaga() {
   console.log('------>helloSaga')
-  yield takeEvery('DELAY_CHANGE', test)
+  yield takeEvery(actions.DELAY_CHANGE, test)
 }
 
 export default helloSaga
