@@ -8,8 +8,10 @@ import helloSaga from './sagas.js';
 
 import App from './App';
 
+//以 Sagas 列表创建一个 Saga middleware
 const sagaMiddleware = createSagaMiddleware(helloSaga)
 
+//将这个 Saga middleware 连接至 Redux store
 var store = createStore(doChange,
   applyMiddleware(sagaMiddleware)
 );
