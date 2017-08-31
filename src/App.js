@@ -59,10 +59,12 @@ class Timer extends Component {
   }
 }
 
+//从 Redux store 接收到全局的 state，然后返回组件中需要的 props。
 function select(state){
   return {
     ...state
   }
 }
 
+//使用connect() 方法将包装好的组件连接到Redux。
 export default connect(select)(App);
